@@ -4,8 +4,12 @@ let connections = []; // Array to hold all peer connections
 
 // Initialize PeerJS
 function initializePeer() {
-    peer = new Peer({ host: 'https://peerconnect-one.vercel.app', path: '/' });
- // Create a new peer with a unique ID
+    peer = new Peer({
+        host: 'peerconnect-one.vercel.app', // Update if needed
+        path: '/', // Ensure this matches your server setup
+        secure: true, // Use secure connections (recommended)
+        port: 443 // Default port for HTTPS
+    });
 
     peer.on('open', (id) => {
         document.getElementById('peer-id').textContent = `Your Peer ID: ${id}`;
@@ -16,6 +20,16 @@ function initializePeer() {
         connections.push(connection);
         console.log('Incoming peer connection:', connection.peer);
         handleConnection(connection);
+    });
+
+    // Log ICE candidates
+    peer.on('iceCandidate', (candidate) => {
+        console.log('New ICE candidate:', candidate);
+    });
+
+    // Optional: Handle connection errors
+    peer.on('error', (err) => {
+        console.error('Peer connection error:', err);
     });
 }
 
