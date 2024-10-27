@@ -6,7 +6,7 @@ let connections = []; // Array to hold all peer connections
 function initializePeer() {
     peer = new Peer({
         host: 'peerconnect-one.vercel.app', // Update if needed
-        path: '/', // Ensure this matches your server setup
+        path: '/peerjs', // Ensure this matches your server setup
         secure: true, // Use secure connections (recommended)
         port: 443 // Default port for HTTPS
     });
