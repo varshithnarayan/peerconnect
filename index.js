@@ -7,7 +7,8 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Enable CORS
-app.use(cors());
+app.use(cors({ origin: 'https://peerconnect-one.vercel.app' }));
+
 
 // Serve static files from the current directory
 app.use(express.static(path.join(__dirname)));
