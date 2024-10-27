@@ -4,7 +4,8 @@ let connections = []; // Array to hold all peer connections
 
 // Initialize PeerJS
 function initializePeer() {
-    peer = new Peer(); // Create a new peer with a unique ID
+    peer = new Peer({ host: 'https://peerconnect-one.vercel.app', path: '/' });
+ // Create a new peer with a unique ID
 
     peer.on('open', (id) => {
         document.getElementById('peer-id').textContent = `Your Peer ID: ${id}`;
